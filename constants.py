@@ -1,3 +1,11 @@
+"""
+DISCLAIMER:
+This file is not a product of my work. It was written by my lecturers.
+It is just a set of keys to use when saving/loading tensor/model files.
+
+Szymon T. Kossowski
+"""
+
 # Keys to use when saving/loading tensor/model files
 X_KEY = "X_tensor"
 Y_KEY = "y_tensor"
