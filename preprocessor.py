@@ -230,7 +230,7 @@ def main(args):
     spacy_model = spacy.load(args.spacy_model, disable=['parser', 'ner'])
     embeddings = compress_fasttext.models.CompressedFastTextKeyedVectors.load(args.embeddings_file)
     preprocessor = Preprocessor(spacy_model, embeddings)
-    preprocessor.load_data(args.dev_data, args.label_map_file)
+    preprocessor.load_data(args.data_file, args.label_map_file)
     preprocessor.generate_tensors()
     preprocessor.save_tensors(args.output_file)
 

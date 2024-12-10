@@ -328,7 +328,7 @@ def parseargs():
     ap.add_argument("-h", "--hidden_size", type=int, default=8, help="Number of neurons in the hidden layer.")
     ap.add_argument("-e", "--n_epochs", type=int, default=200, help="Number of training epochs.")
     ap.add_argument("-l", "--learning_rate", type=float, default=0.01, help="Learning rate for the optimiser.")
-    ap.add_argument("-o", "--output_model", type=str, required=True, help="Base path to save the trained model and "
+    ap.add_argument("-s", "--output_model", type=str, required=True, help="Base path to save the trained model and "
                                                                           "metadata.")
     return ap.parse_args()
 

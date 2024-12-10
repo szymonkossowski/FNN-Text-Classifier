@@ -38,4 +38,44 @@ made changes in the directory too.
 
 ## User's Manual
 ### Step I: Preprocessing
-Make sure you have all the desired data in the `Data` directory.
+Make sure you have all the desired data in the `Data` directory. Then, in terminal, change directory to the project directory:\
+`cd /path/FFN-Text-Classifier`
+
+After that you run the command to get the dev tensors:
+````
+python preprocessor.py --data_file Data/[YOUR DEV DATA FILE].csv --label_map_file Data/[YOUR LABEL MAP FILE].json 
+--output_file Data/dev-tensors.pt --embeddings_file Data/[YOUR EMBEDDINGS FILE] --spacy_model 
+[SPACY MODEL OF YOUR CHOICE, DEFAULT=de_core_news_sm]`
+````
+
+You can alternatively use `-d` for `--data_file`, `-l` for `--label_map_file`, `-s` for `--output_file`, `-m` for `--spacy_model`
+and `-e` for `--embeddings_file`. Argument `--spacy_model` is optional, but keep in mind that the default SpaCy model
+is `de_core_news_sm`, for the German language.
+
+For the training and test tensors, you run analogical command, but instead of dev data file,
+you should use test or train data file respectively and in output file you should specify that the file
+is going to be for test or training tensors.
+
+### Step II: Training
+To train your model, run this command:
+````
+python trainer.py --train_tensor_file [YOUR TRAINING TENSOR FILE FROM PREPROCESSING].pt --dev_tensor_file [YOUR DEV 
+TENSOR FILE FROM PREPROCESSING].pt --hidden_size [HIDDEN SIZE OF YOUR CHOICE, DEFAULT=8] --n_epochs [NUMBER OF TRAINING
+EPOCHS OF YOUR CHOICE, DEFAULT=200] --learning_rate [LEARNING RATE OF YOUR CHOICE FOR THE OPTIMISER, DEFAULT=0.01]
+--output_model Models/[YOUR MODEL NAME]
+````
+Alternatively you can use these flags `-t` for `--train_tensor_file`, `-d` for `--dev_tensor_file`, `-h` for
+`--hidden_size`, `-n` for `--n_epochs`, `-l` for `--learning_rate`, `-s` for `--output_model`.
+
+### Step III: Retraining with `grid_search.py`:
+TODO
+
+[//]: # (If you want to retrain your model with the hyperparameters found by `grid_search.py`, run this command:)
+
+[//]: # (````)
+
+[//]: # (python grid_search.py --data-dev Data/[YOUR DEV TENSORS FILE FROM PREPROCESSOR].pt --data-test Data/[YOUR TEST TENSORS)
+
+[//]: # (FILE FROM PREPROCESSOR].pt)
+
+[//]: # (````)
