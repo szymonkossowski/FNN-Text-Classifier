@@ -1,6 +1,9 @@
 # FNN Text Classifier
 
 ## About
+This is a GitHub adaptation of my project done as an assignment for the Statistical Language Processing seminar
+in the Summer Semester of 2024 at the University of Tübingen. I changed it a bit and made command-line ready.
+
 This software is a FeedForward Network for text classification task, classifying texts according to the labels provided
 by the label map file. The software uses SpaCy models to preprocess text data and generate tensors for training. For
 now, it natively supports German-language data and classifies trains German-language classifier models, but there
