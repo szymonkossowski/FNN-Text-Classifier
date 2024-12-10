@@ -19,6 +19,7 @@ import constants
 from constants import *
 
 
+# Class FeedForwardNet(nn.Module) by my lecturers
 class FeedForwardNet(nn.Module):
     def __init__(self, n_dims, hidden_size, n_classes):
         """
@@ -49,6 +50,7 @@ class FeedForwardNet(nn.Module):
 
 
 class Trainer:
+    # Init function by my lecturers
     def __init__(self):
         """
         Class for training a Feedforward Network.
@@ -142,6 +144,7 @@ class Trainer:
         :return: float - macro F1 score
         """
         # calculating the macro f1 from the highest values in each row of predictions
+        # Content of the line 148 by my lecturers
         with torch.no_grad():
             predictions = model(self.X_dev)
             predicted_labels = torch.argmax(predictions, 1)
@@ -234,6 +237,7 @@ class Trainer:
         :return: best model dictionary containing the model state and all metadata
         """
 
+        # Content of the line 243 by my lecturers
         # Use a seed to make sure that results are reproducible.
         # Please do not remove or change the seed.
         torch.manual_seed(42)

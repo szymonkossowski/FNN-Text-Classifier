@@ -1,11 +1,13 @@
 """
-Course:        Statistical Language Processing - Summer 2024
-Assignment:    (A2)
-Author(s):     (Szymon Tomasz Jarogniew Kossowski)
+HONOUR CODE:
+This project is an adaptation of my previous project I did for the seminar
+Statistical Language Processing at the University of Tübingen in the Summer
+Semester 2024. The code here is a result of my own work on the patterns given
+by my lecturers (they include method declarations, docstring descriptions
+and marked parts of code) and my later work to adapt the project, including
+adaptation for the command line use.
 
-Honor Code:    I pledge that this program represents my own work,
-               and that I have not given or received unauthorized help
-               with this assignment.
+Szymon T. Kossowski
 """
 from trainer import Trainer
 from constants import *
@@ -49,6 +51,7 @@ def main(args):
     best_f1 = 0.0
     best_parameters = None
 
+    # Code in lines 55-57 given by my lecturers
     for h_size in hidden_sizes:
         for n_epochs in epochs:
             for lr in learning_rates:
