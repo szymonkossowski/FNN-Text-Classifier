@@ -46,8 +46,8 @@ def main(args):
 
     # simple grid search
     learning_rates = [0.001, 0.005, 0.01]
-    epochs = [2, 4, 8]
-    hidden_sizes = [100, 150, 200]
+    epochs = [100, 150, 200]
+    hidden_sizes = [2, 4, 8]
     best_f1 = 0.0
     best_parameters = None
 
