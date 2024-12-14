@@ -16,8 +16,10 @@ import argparse
 
 def parseargs():
     ap = argparse.ArgumentParser(description="Description")
-    ap.add_argument("-d", "--data-dev", type=str, required=True, help="Path to the development data tensor file.")
-    ap.add_argument("-t", "--data-test", type=str, required=True, help="Path to the test data tensor file.")
+    ap.add_argument("-dev", "--data_dev", type=str, required=True, help="Path to the development data tensor file.")
+    ap.add_argument("-test", "--data_test", type=str, required=True, help="Path to the test data tensor file.")
+    ap.add_argument("-train", "--data_train", type=str, required=True, help="Path to the training data tensor file.")
+    ap.add_argument("-s", "--output_file", type=str, default="Models/best-model.pt", help="Path to save the file")
     return ap.parse_args()
 
 
@@ -42,7 +44,7 @@ def main(args):
     You will also want to print the scores and hyperparameters, to use in your discussion.
     """
     trainer = Trainer()
-    trainer.load_data(train_tensor_file=args.data_test, dev_tensor_file=args.data_dev)
+    trainer.load_data(train_tensor_file=args.data_train, dev_tensor_file=args.data_dev)
 
     # simple grid search
     learning_rates = [0.001, 0.005, 0.01]
@@ -77,7 +79,7 @@ def main(args):
     best_trainer.load_data(train_tensor_file=args.data_test, dev_tensor_file=args.data_dev)
     best_trainer.train(best_parameters[HIDDEN_SIZE_KEY], best_parameters[N_EPOCHS_KEY],
                        best_parameters[LEARNING_RATE_KEY])
-    best_trainer.save_best_model("Models/best-model")
+    best_trainer.save_best_model(args.output_file)
     print("Best model saved as Models/best-model.pt")
 
 

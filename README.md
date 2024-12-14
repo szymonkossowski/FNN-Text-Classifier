@@ -70,15 +70,21 @@ EPOCHS OF YOUR CHOICE, DEFAULT=200] --learning_rate [LEARNING RATE OF YOUR CHOIC
 Alternatively you can use these flags `-t` for `--train_tensor_file`, `-d` for `--dev_tensor_file`, `-h` for
 `--hidden_size`, `-n` for `--n_epochs`, `-l` for `--learning_rate`, `-s` for `--output_model`.
 
-### Step III: Retraining with `grid_search.py`:
-TODO
+### Step III: Model evaluation
+To evaluate your model, run this command:
+````
+python evaluator.py --model Models/[MODEL TO LOAD].pt --tensors Data/[TRAINING, DEV or TEST TENSORS FILE].pt
+````
+Alternatively you can use these flags `-m` for `--model`, `-t` for `--tensors`.
 
-[//]: # (If you want to retrain your model with the hyperparameters found by `grid_search.py`, run this command:)
+### Step IV: Retraining with `grid_search.py`:
+If you want to retrain your model with the hyperparameters found by `grid_search.py`, run this command:
+````
+python grid_search.py --data_dev Data/[YOUR DEV TENSORS FILE FROM PREPROCESSOR].pt --data_test [YOUR TEST TENSORS FROM 
+PREPROCESSOR] --data_train Data/[YOUR TRAINING TENSORS FILE FROM PREPROCESSOR].pt --output_file Models/[BEST MODEL FILENAME].pt
+````
+The software will find the best parameters using grid search and then train a new model using the found hyperparameters
+and the test tensors and then save it. Default path to the best model is `Models/best-model.pt`.
 
-[//]: # (````)
-
-[//]: # (python grid_search.py --data-dev Data/[YOUR DEV TENSORS FILE FROM PREPROCESSOR].pt --data-test Data/[YOUR TEST TENSORS)
-
-[//]: # (FILE FROM PREPROCESSOR].pt)
-
-[//]: # (````)
+Alternatively you can use these flags `-dev` for `--data_dev`, `-test` for `--data_test`, `-train` for `--data_train`,
+`-s` (s for "save") for `--output_file`.

@@ -103,8 +103,8 @@ class Evaluator:
 
 def parseargs():
     ap = argparse.ArgumentParser(description="Evaluate trained model on specified data.")
-    ap.add_argument("--model", type=str, required=True, help="Path to the .pt model file.")
-    ap.add_argument("--data", type=str, required=True, help="Path to the .pt data (dev, test or training)"
+    ap.add_argument("-m", "--model", type=str, required=True, help="Path to the .pt model file.")
+    ap.add_argument("-t", "--tensors", type=str, required=True, help="Path to the .pt  file (dev, test or training)"
                                                             " file.")
     return ap.parse_args()
 
